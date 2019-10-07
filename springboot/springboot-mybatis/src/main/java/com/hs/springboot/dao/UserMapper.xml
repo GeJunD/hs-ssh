@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace:命名空间，必填项，必须保证唯一,填写接口的全局路径  -->
+<!-- 要求1：namespace命名空间必须是接口的全局路径 -->
+<mapper namespace="com.hs.springboot.dao.UserMapper">
+	<insert id="add">
+		insert into users (name,age) values(#{name},#{age})
+	</insert>
+
+	<select id="userList" resultType="com.hs.springboot.entity.User">
+		SELECT * FROM users
+	</select>
+
+	<delete id="delUser">
+		DELETE FROM users WHERE id = #{id} ;
+	</delete>
+
+	<update id="updateUser">
+		UPDATE users SET  NAME = #{name} , age = #{age} WHERE id = #{id}
+	</update>
+
+	<select id="toUpdate" resultType="com.hs.springboot.entity.User" parameterType="int">
+		SELECT * FROM users where id=#{id}
+	</select>
+	
+</mapper>
